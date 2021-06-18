@@ -1,0 +1,17 @@
+export default {
+    PORT: 3000,
+    BASE_URL: 'api',
+    PRODUCT_URL: 'products',
+    DB_HOST: 'localhost',
+    DB_USER: 'root',
+    DB_PASSWORD: 'root',
+    DB_NAME: process.env.DB_NAME || 'bank_db',
+    PAGE_SIZE: 10,
+    STATUS_CODE_400: 400,
+    STATUS_CODE_401: 401,
+    STATUS_CODE_201: 201,
+    STATUS_CODE_500: 500,
+    DIALECT: 'MYSQl',
+    DB_SHOW_LOGS: false,
+    TOKEN_SECRET: 'foobar',
+}
