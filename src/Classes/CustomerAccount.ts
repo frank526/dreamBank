@@ -1,4 +1,4 @@
-class CustomerAccount implements ICustomerAccount {
+class CustomerAccount implements IBankProductEnterAmount, IBankProductRetractAmount, IBankProductGetBalance, IBankProductTransfer {
    private accountNumber: string;
    private customerFirstName: string;
    private customerLastName: string;
@@ -27,13 +27,17 @@ class CustomerAccount implements ICustomerAccount {
         this.balance = this.balance - amount;
     }
 
-    toTransfer(destinyAccount: ICustomerAccount, amount:number){
-       const currentBalance = this.getBalance();
-        if(!amount || currentBalance < amount){
-            throw 'The amount to be transferred is invalid';
+    toTransfer(destinyAccount: IBankProductEnterAmount, amount: number) {
+        const currentBalance = this.getBalance();
+        if(!amount){
+            throw 'Invalid Amount';
+        }
+        if(amount > currentBalance) {
+            throw 'Balance is insufficient';
         }
         destinyAccount.enterAmount(amount);
         this.retractAmount(amount);
+        return true;
     }
 }
 

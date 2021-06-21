@@ -3,7 +3,7 @@ import PasswordManager from './PasswordManager';
 import RequestedBankProductManager from './RequestedBankProductManager';
 import UserAuthManager from './UserAuthManager';
 import CustomerAccountManager from '../CustomerAccountClasses/CustomerAccountManager';
-import TransactionManager from '../TransactionClasses/TransactionManager';
+import TransactionManager from '../TransactionClasses/TransactionValidateData';
 import CustomerAccountBuildObject from '../CustomerAccountClasses/CustomerAccountBuildObject';
 
 export {
