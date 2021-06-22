@@ -1,14 +1,20 @@
-class CustomerAccount implements IBankProductEnterAmount, IBankProductRetractAmount, IBankProductGetBalance, IBankProductTransfer {
+class CustomerAccount implements IBankProductEnterAmount, IBankProductRetractAmount, IBankProductGetBalance, IBankProductTransfer, IObjectId, IGetAccountNumber {
+   private id: number;
    private accountNumber: string;
    private customerFirstName: string;
    private customerLastName: string;
    private balance: number;
 
-    constructor(accountNumber: string, customerFirstName: string, customerLastName:string, balance:number){
+    constructor(accountNumber: string, customerFirstName: string, customerLastName:string, balance:number, id?:number){
         this.accountNumber = accountNumber;
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
         this.balance = balance;
+        this.id = id;
+    }
+
+    getId(){
+        return this.id;
     }
 
     getBalance(){

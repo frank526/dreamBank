@@ -12,4 +12,10 @@ interface ICustomerAccountRepositoryRetrieve {
     getCustomerAccount(attributes?:string[])
 }
 
+interface IGetAccountNumber {
+    getAccountNumber(): string;
+}
+
+
+
 

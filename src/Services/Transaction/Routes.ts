@@ -3,8 +3,10 @@ import * as bodyParser from 'body-parser';
 import { authentication } from '../BankProduct/Controller';
 
 import {
-    generateTransaction,
-    getTransactionList,
+    validateTransaction,
+    executeTransaction,
+    registerTransactionInfo,
+   // getTransactionList,
 } from './Controller';
 
 const jsonParser = bodyParser.json();
@@ -14,12 +16,11 @@ const router = express.Router();
 router.post('/transaction',
     jsonParser,
     authentication,
-    generateTransaction,
+    validateTransaction,
+    executeTransaction,
+    registerTransactionInfo,
 );
 
-router.get('/transactions',
-    authentication,
-    getTransactionList,
-);
+
 
 export default router;
