@@ -8,7 +8,7 @@ class TransactionRepositoryCreate {
     }
 
     async createTransaction(transactionData: TransactionData) {
-        const [error, transaction] = await awaitToJs(this.transactionRepositoryCreate.create(transactionData)) as TransactionData[];
+        const [error, transaction] = await awaitToJs(this.transactionRepositoryCreate.create(transactionData));
         if (error) {
             throw error;
         }

@@ -1,5 +1,5 @@
 
-declare interface UserData {
+type UserData = {
     id?: number;
     firstName?: string;
     lastName?: string;

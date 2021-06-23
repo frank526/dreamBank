@@ -1,4 +1,4 @@
-import { CustomerAccount } from '../Classes/index';
+import { CustomerAccount } from '../Entities/index';
 
 declare global {
 

@@ -1,6 +1,6 @@
 import joi from 'joi';
 
-class CustomerAccountTransaction implements IBankProductTransaction {
+class AccountTransactionValidation implements IAccountTransactionValidation {
     private originAccountNumber: string;
     private destinyAccountNumber: string;
     private transferredAmount: number;
@@ -33,4 +33,4 @@ class CustomerAccountTransaction implements IBankProductTransaction {
     }
 }
 
-export default CustomerAccountTransaction;
+export default AccountTransactionValidation;

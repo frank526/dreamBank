@@ -2,8 +2,11 @@ interface IBankProductExecuteTransaction {
      executeTransaction(transactionData);
 }
 
+interface ITransactionStorageCreate {
+    create(transactionData: TransactionData);
+}
 
-interface IBankProductTransaction {
+interface IAccountTransactionValidation {
     validateData()
 }
 
@@ -16,7 +19,7 @@ interface ITransactionCreateDB {
 }
 
 interface ITransactionRegister {
-    registerTransaction(originBankProduct: IGetAccountNumber, destinyBankProduct: IGetAccountNumber, amount: number, description:string);
+    registerTransaction(originAccount: IGetAccountNumber, destinyAccount: IGetAccountNumber, amount:number, description: string);
 }
 
  

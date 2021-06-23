@@ -1,7 +1,7 @@
 import awaitToJs from 'await-to-js';
-import db from '../DBConnection';
+import db from '../../DBConnection';
 
-class TransactionRegister implements ITransactionCreateDB {
+class TransactionCreate implements ITransactionCreateDB {
     async create(transactionData: TransactionData) {
         const [error, transactionObj] = await awaitToJs(db.Transaction.create(transactionData, {raw:true}));
         if (error) {
@@ -13,4 +13,4 @@ class TransactionRegister implements ITransactionCreateDB {
         return transactionObj.toJSON();
     }
 }
- export default TransactionRegister;
+ export default TransactionCreate;

@@ -1,15 +1,18 @@
 import express from 'express';
 const router = express.Router();
-import { 
+
+/*import { 
     getCustomerAccountList,
- } from './Controller';
+ } from './Controller';*/
 
 
 
 router.get('/customeraccount',
-getCustomerAccountList,
+
 );
 
 export default router;
+
+
 
 

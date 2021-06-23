@@ -1,4 +1,4 @@
-class CustomerAccount implements IBankProductEnterAmount, IBankProductRetractAmount, IBankProductGetBalance, IBankProductTransfer, IObjectId, IGetAccountNumber {
+class CustomerAccount implements IBankProductRetractAmount, IBankProductGetBalance, IBankProductTransfer, IObjectId, IGetAccountNumber {
    private id: number;
    private accountNumber: string;
    private customerFirstName: string;

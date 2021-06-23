@@ -1,4 +1,4 @@
-import { Transaction } from '../Classes';
+import { Transaction } from '../Entities';
 
 class TransactionBuildObject {
    private static validateTransactionData(transactionInfo: TransactionData){

@@ -1,6 +1,6 @@
 
 
-interface IBankProductEnterAmount extends IBankProductUpgradeableBalance {
+interface IBankProductEnterAmount extends IBankProductTransaction {
     enterAmount(amount: number): void;
 }
 
@@ -21,11 +21,23 @@ interface IBankProductUpgradeableBalance {
     getBalance(): number;
 }
 
+interface IBankProductTransaction {
+    getId(): number;
+    getBalance(): number;
+    getAccountNumber(): string;
+}
+
+interface IBankProductOriginTransaction extends IBankProductTransaction{
+    toTransfer(destinyBankProduct: IBankProductEnterAmount, amount:number);
+}
+
+
+
 interface IObjectId {
     getId(): number;
 }
 interface IBankProductTransfer extends IBankProductUpgradeableBalance {
-    toTransfer(desitnyBankProduct: IBankProductEnterAmount, amount:number)
+    toTransfer(destinyBankProduct: IBankProductEnterAmount, amount:number)
 }
 
 interface IBankProductUpdateBalance {

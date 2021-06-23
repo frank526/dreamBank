@@ -1,15 +1,18 @@
 import awaitToJs from 'await-to-js';
 import config from '../../config';
-import {
-    TransactionManager,
- } from '../../Managers';
 
- import { 
-     AccountTransactionValidation,
-      AccountTransactionProcess } from '../../TransactionClasses'
-import { TransactionRepository, CustomerAccountRetrieve, CustomerAccountRepositoryUpdate, TransactionRepositoryCreate } from '../../Repositories';
 
-import { CustomerAccountTransaction, CustomerAccount, BankProductCreator } from '../../Classes';
+
+import { TransactionRepository, CustomerAccountRepositoryUpdate, TransactionRepositoryCreate } from '../../Repositories';
+
+import { CustomerAccountRetrieve } from '../../Storage/CustomerAccount';
+
+import { CustomerAccount, BankProductCreator } from '../../Entities';
+
+import { 
+    AccountTransactionValidation,
+    AccountTransactionProcess,
+} from '../../Transaction';
 
 import { CustomerAccountCreator } from '../../CustomerAccountClasses';
 
@@ -25,10 +28,9 @@ const validateTransaction: MiddlewareNext = async (req, res, next) => {
         return res.status(STATUS_CODE_400).send(error);
     }
     const { originAccountNumber, destinyAccountNumber, amount, description } = req.body.transactionData;
-    const accountTransaction = new CustomerAccountTransaction(originAccountNumber, destinyAccountNumber, amount);
-    const transacionValidation = new AccountTransactionValidation();
+    const transactionValidation = new AccountTransactionValidation(originAccountNumber, destinyAccountNumber,amount, description);
     try {
-        transacionValidation.executeTransactionValidation(accountTransaction);
+        transactionValidation.validateData();
     } catch (error) {
         return res.status(STATUS_CODE_400).send(error);
     }
@@ -37,8 +39,8 @@ const validateTransaction: MiddlewareNext = async (req, res, next) => {
 
 const buildCustomerAccount = async(accountNumber: string) => {
     const where = { accountNumber };
-    const accountRetrieve = new CustomerAccountRetrieve(where);
-    const [error, accountData] = await awaitToJs(accountRetrieve.getCustomerAccount());
+    const accountRetrieve: ICustomerAccountStorageRetrieve = new CustomerAccountRetrieve();
+    const [error, accountData] = await awaitToJs(accountRetrieve.getCustomerAccount(where));
     if (error) {
         throw error;
     }
@@ -47,6 +49,7 @@ const buildCustomerAccount = async(accountNumber: string) => {
     return customerAccount;
 }
 
+/*
 const buildTransactionData = (originAccount: CustomerAccount, destinyAccount: CustomerAccount, amount:number, description: string) => {
     const transactionData = {
         originAccount:{
@@ -62,9 +65,9 @@ const buildTransactionData = (originAccount: CustomerAccount, destinyAccount: Cu
     };
     const transactionDataJson = JSON.stringify(transactionData);
     return transactionDataJson;
-}
+}*/
 
-const executeTransaction: MiddlewareNext = async (req, res, next) => {
+const executeTransaction: Middleware = async (req, res) => {
     const { originAccountNumber, destinyAccountNumber, amount, description } = req.body.transactionData;
     const [error1, originAccount] = await awaitToJs(buildCustomerAccount(originAccountNumber));
 
@@ -77,18 +80,17 @@ const executeTransaction: MiddlewareNext = async (req, res, next) => {
         return res.status(STATUS_CODE_400).send(error1);
     }
 
-    const transactionProcess = new AccountTransactionProcess(originAccount, destinyAccount, amount);
+    const transactionProcess = new AccountTransactionProcess(originAccount, destinyAccount, amount, description);
 
+    let transaction;
     try {
-        transactionProcess.executeTransaction();
+        transaction = await awaitToJs(transactionProcess.executeTransaction());
     } catch (error) {
         return res.status(STATUS_CODE_400).send(error);
     }
-    const transactionData = buildTransactionData(originAccount, destinyAccount, amount, description);
-    req.body.bankAccounts = transactionData;
-    return next();
+    return res.status(STATUS_CODE_201).json({Transaction: transaction});
 }
-
+/*
 const updateAccountBalance = async(accountData: CustomerAccountData)=> {
     const { balance, accountNumber } = accountData;
     const accountDataToUpdate = {
@@ -103,7 +105,9 @@ const updateAccountBalance = async(accountData: CustomerAccountData)=> {
     }
     return update;
 }
+*/
 
+/*
 const registerTransactionInfo = async (req, res) => {
     if (!req.body || !req.body.bankAccounts) {
         return res.status(STATUS_CODE_400).send('Could not be register transaction info');
@@ -139,7 +143,7 @@ const registerTransactionInfo = async (req, res) => {
 
    return res.status(STATUS_CODE_201).json({ Transaction: transaction })
 }
-
+*/
 
 /*
 const getTransactionList: Middleware = async (req, res) => {
@@ -160,6 +164,5 @@ const getTransactionList: Middleware = async (req, res) => {
 export {
     validateTransaction,
     executeTransaction,
-    registerTransactionInfo,
    // getTransactionList,
 };

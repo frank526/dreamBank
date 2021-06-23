@@ -7,7 +7,7 @@ class CustomerAccountRepositoryUpdate {
         this.customerAccountRepository = new CustomerAccountUpdateDB();
     }
 
-    async updateCustomerAccount(accountData: CustomerAccountData, where: CustommerAccountWhere) {
+    async updateCustomerAccount(accountData: CustomerAccountData, where: CustomerAccountWhere) {
         const [error, update] = await awaitToJs(this.customerAccountRepository.update(accountData, where));
         if (error) {
             throw error;

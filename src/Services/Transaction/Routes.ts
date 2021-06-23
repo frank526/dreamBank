@@ -5,7 +5,7 @@ import { authentication } from '../BankProduct/Controller';
 import {
     validateTransaction,
     executeTransaction,
-    registerTransactionInfo,
+   // registerTransactionInfo,
    // getTransactionList,
 } from './Controller';
 
@@ -18,7 +18,7 @@ router.post('/transaction',
     authentication,
     validateTransaction,
     executeTransaction,
-    registerTransactionInfo,
+   // registerTransactionInfo,
 );
 
 

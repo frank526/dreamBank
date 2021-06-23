@@ -1,9 +1,9 @@
-import { CustomerAccount } from '../Classes';
+import { CustomerAccount } from '../Entities';
 
 class CustomerAccountCreator implements IBankProductCreator {
     createBankProduct(customerAccountData: CustomerAccountData) {
-        const { accountNumber, customerFirstName, customerLastName, balance } = customerAccountData;
-        const account = new CustomerAccount(accountNumber, customerFirstName, customerLastName, balance);
+        const { accountNumber, customerFirstName, customerLastName, balance, id } = customerAccountData;
+        const account = new CustomerAccount(accountNumber, customerFirstName, customerLastName, balance, id);
         return account;
     }
 }

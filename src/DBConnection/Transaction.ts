@@ -19,6 +19,9 @@ const defineTransactionModel: defineTableModel = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        description: {
+            type: DataTypes.STRING,
+        },
     };
     const modelOptions = {
         modelName: 'Transaction',

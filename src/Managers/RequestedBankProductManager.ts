@@ -1,5 +1,5 @@
 import awaitToJs from 'await-to-js';
-import { RequestedBankProduct } from '../Classes';
+import { RequestedBankProduct } from '../Entities';
 import { 
     RequestProductRepository, 
     UserRepository,

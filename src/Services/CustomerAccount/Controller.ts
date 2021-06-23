@@ -1,4 +1,4 @@
-import awaitToJs from 'await-to-js';
+/*import awaitToJs from 'await-to-js';
 import config from '../../config';
 import {
     UserAuthManager,
@@ -8,6 +8,7 @@ import {
     TransactionManager,
  } from '../../Managers';
 
+ 
  import { TransactionRepository } from '../../Repositories';
 
 const { 
@@ -33,3 +34,5 @@ const getCustomerAccountList: Middleware = async(req, res) => {
 export {
     getCustomerAccountList,
 };
+
+*/

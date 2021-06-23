@@ -1,6 +1,6 @@
 import awaitToJs from 'await-to-js';
 import db from '../DBConnection';
-import { RequestedBankProduct } from '../Classes';
+import { RequestedBankProduct } from '../Entities';
 
 class RequestProductRepository {
     static async createRequestedProduct(requestedBankProductData: RequestedBankProduct) {

@@ -1,7 +1,7 @@
 import RequestedBankProduct from './RequestedBankProduct';
-import Transaction from './CustomerAccountTransaction';
+import Transaction from '../Transaction/AccountTransactionValidation';
 import CustomerAccount from './CustomerAccount';
-import CustomerAccountTransaction from './CustomerAccountTransaction';
+import CustomerAccountTransaction from '../Transaction/AccountTransactionValidation';
 import BankProductCreator from './BankProductCreator';
 
 

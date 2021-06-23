@@ -8,8 +8,12 @@ interface ICustomerAccountUpdateDB{
     update(accountData, where);
 }
 
-interface ICustomerAccountRepositoryRetrieve {
-    getCustomerAccount(attributes?:string[])
+interface ICustomerAccountDBRetrieve {
+    getCustomerAccount(where: CustomerAccountWhere, attributes?:string[])
+}
+
+interface ICustomerAccountStorageRetrieve {
+    getCustomerAccount(where: CustomerAccountWhere, attributes?:string[])
 }
 
 interface IGetAccountNumber {

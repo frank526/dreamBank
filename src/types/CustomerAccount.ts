@@ -7,7 +7,7 @@ type CustomerAccountData = {
      balance?: number;
 }
 
-type CustommerAccountWhere = {
+type CustomerAccountWhere = {
      id?: number;
      accountNumber?: string;
      customerFirstName?: string;
@@ -18,5 +18,5 @@ type CustommerAccountWhere = {
 
 type UpdateCustomerAccount = (
      accountData: CustomerAccountData,
-     where: CustommerAccountWhere
+     where: CustomerAccountWhere
 ) => Promise<number>
