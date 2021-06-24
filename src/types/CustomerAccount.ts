@@ -13,6 +13,7 @@ type CustomerAccountWhere = {
      customerFirstName?: string;
      customerLastName?: string;
      balance?: number;
+     userId?: string;
 }
 
 

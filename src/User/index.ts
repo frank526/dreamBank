@@ -1,5 +1,9 @@
-import UserValidation from './UserValidation';
-
+import UserCreateProcess from './UserCreateProcess';
+import UserAuthProcess from './UserAuthProcess';
+import UserAuthTokenProcess from './UserAuthTokenProcess';
+ 
 export {
-    UserValidation,
+    UserCreateProcess,
+    UserAuthProcess,
+    UserAuthTokenProcess,
 }

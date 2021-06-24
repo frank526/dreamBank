@@ -11,6 +11,7 @@ export default {
     STATUS_CODE_401: 401,
     STATUS_CODE_201: 201,
     STATUS_CODE_500: 500,
+    STATUS_CODE_200: 200,
     DIALECT: 'MYSQl',
     DB_SHOW_LOGS: false,
     TOKEN_SECRET: 'foobar',

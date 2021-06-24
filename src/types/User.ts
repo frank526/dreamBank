@@ -8,4 +8,13 @@ type UserData = {
 }
 
 
+type UserWhere = {
+    id?: number;
+    accountNumber?: string;
+    customerFirstName?: string;
+    customerLastName?: string;
+    identificationCard?: string;
+    balance?: number;
+}
+
 

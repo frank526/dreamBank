@@ -31,8 +31,6 @@ interface IBankProductOriginTransaction extends IBankProductTransaction{
     toTransfer(destinyBankProduct: IBankProductEnterAmount, amount:number);
 }
 
-
-
 interface IObjectId {
     getId(): number;
 }

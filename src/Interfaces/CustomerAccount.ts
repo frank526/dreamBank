@@ -12,6 +12,14 @@ interface ICustomerAccountDBRetrieve {
     getCustomerAccount(where: CustomerAccountWhere, attributes?:string[])
 }
 
+interface ICustomerAccountListDBRetrieve {
+    getCustomerAccountList(where: CustomerAccountWhere, attributes?:string[])
+}
+
+interface ICustomerAccountListStorageRetrieve {
+    getCustomerAccountList(where: CustomerAccountWhere, attributes?:string[])
+}
+
 interface ICustomerAccountStorageRetrieve {
     getCustomerAccount(where: CustomerAccountWhere, attributes?:string[])
 }

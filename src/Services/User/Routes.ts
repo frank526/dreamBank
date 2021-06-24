@@ -2,29 +2,20 @@ import express from 'express';
 import * as bodyParser from 'body-parser';
 
 import { 
-    validateUserInfo, 
-    validateIdentification, 
-    encryptPassword,
-    registerUser,
-    validateUserCredentials,
-    generateToken,
-    validateLoginRequest,
+    createUser,
+    login,
  } from './Controller';
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
-router.post('/user', 
-jsonParser, 
-validateUserInfo,  
-validateIdentification, 
-encryptPassword, 
-registerUser);
+router.post('/user',
+    jsonParser,
+    createUser,
+);
 
 router.get('/login',
-validateLoginRequest,
-validateUserCredentials,
-generateToken,
+    login
 );
 
 export default router;

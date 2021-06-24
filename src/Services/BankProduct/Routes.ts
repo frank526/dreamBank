@@ -1,7 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
+import authentication from '../Auth/Authentication';
 import { 
-    authentication,
     registerRequestedBankProduct,
  } from './Controller';
 

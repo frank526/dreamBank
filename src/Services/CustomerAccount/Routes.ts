@@ -1,18 +1,16 @@
 import express from 'express';
+// import { authentication } from '../BankProduct/Controller';
+
+import authentication from '../Auth/Authentication';
 const router = express.Router();
 
-/*import { 
+import { 
     getCustomerAccountList,
- } from './Controller';*/
-
-
+ } from './Controller';
 
 router.get('/customeraccount',
-
+    authentication,
+    getCustomerAccountList,
 );
 
 export default router;
-
-
-
-
